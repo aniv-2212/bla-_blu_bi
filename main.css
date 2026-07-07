@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Base Styles & Resets
+   ========================================================================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Background Video Styling */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Dark Tint Overlay for Contrast */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
+
+/* ==========================================================================
+   Navigation Components
+   ========================================================================== */
+.navbar {
+    height: 70px;
+    background: rgba(15, 33, 72, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.navbar .logo h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-left: 20px;
+    letter-spacing: 0.5px;
+}
+
+.bar {
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+/* Slide-out Sidebar Menu */
+.nav-menu {
+    position: fixed; 
+    top: 0; 
+    left: -250px; 
+    width: 250px; 
+    height: 100%;
+    background: #111111; 
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    padding-top: 90px; 
+    z-index: 1000;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+}
+
+.nav-menu.active { 
+    left: 0; 
+}
+
+.nav-menu ul { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+.nav-menu ul li a { 
+    display: block; 
+    padding: 15px 25px; 
+    color: #e0e0e0; 
+    text-decoration: none; 
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.nav-menu ul li a:hover { 
+    background: #2563eb;
+    color: white;
+}
+
+/* ==========================================================================
+   Core Layout Containers & Panels
+   ========================================================================== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Transforming main section into layout grid */
+.dashboard-grid {
+    display: grid !important;
+    /* FIXED: Adjusted center column width ratio from 1.75fr to 1.2fr */
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 25px;
+    max-width: 1650px;
+    margin: 110px auto 40px auto;
+    width: 95%;
+    align-items: stretch;
+}
+
+/* Base Panel Glassmorphism Elements */
+.content-section,
+.panel-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: transparent(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+/* Layout adjustments for the content panel */
+.content-section {
+    display: none;
+    padding: 2.5rem;
+    margin: 0 !important;
+    width: 100% !important;
+    /* FIXED: Constrained max-width to 500px and centered it in its track */
+    max-width: 500px !important;
+    justify-self: center;
+    text-align: center;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.panel-card {
+    padding: 22px;
+}
+
+/* Global Subheadings for Side Blocks */
+.panel-card h2 {
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    color: #e2e8f0;
+}
+
+/* ==========================================================================
+   Interactive Central Elements (URL Scanner Box)
+   ========================================================================== */
+.center-panel h1 {
+    font-size: 2.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.center-panel p {
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+.search-box { 
+    display: flex; 
+    gap: 12px; 
+    margin-top: 2.5rem; 
+}
+
+input {
+    flex-grow: 1; 
+    padding: 1rem; 
+    border-radius: 8px; 
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0, 0, 0, 0.4); 
+    color: white; 
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input:focus {
+    border-color: #2563eb;
+}
+
+button {
+    padding: 1rem 2rem; 
+    background: #2563eb; 
+    border: none; 
+    border-radius: 8px;
+    color: white; 
+    font-weight: bold; 
+    font-size: 1rem;
+    cursor: pointer; 
+    transition: background 0.2s;
+}
+
+button:hover { 
+    background: #1d4ed8; 
+}
+
+/* ==========================================================================
+   Left Panel Details: Globe Map & Feed logs
+   ========================================================================== */
+.mock-map {
+    height: 160px;
+    background: radial-gradient(circle, rgba(14,165,233,0.1) 0%, transparent 75%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px dashed rgba(255,255,255,0.08);
+}
+
+.globe-container {
+    width: 75px;
+    height: 75px;
+    background: rgba(14, 165, 233, 0.15);
+    border-radius: 50%;
+    position: relative;
+}
+
+.globe-core {
+    width: 100%; height: 100%; border-radius: 50%;
+    box-shadow: inset 0 0 18px rgba(14, 165, 233, 0.5);
+}
+
+.pulse-ring {
+    position: absolute; width: 140%; height: 140%; top: -20%; left: -20%;
+    border: 2px solid rgba(14, 165, 233, 0.3); border-radius: 50%;
+    animation: mapPulse 2.5s infinite linear;
+}
+
+@keyframes mapPulse {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+}
+
+.attack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar for feeds */
+.attack-list::-webkit-scrollbar {
+    width: 4px;
+}
+.attack-list::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+}
+
+.attack-item {
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.attack-item span { 
+    margin-left: auto; 
+    color: #94a3b8; 
+    font-family: monospace; 
+}
+
+.attack-item.phishing i { color: #fbbf24; }
+.attack-item.malware i { color: #f87171; }
+
+/* ==========================================================================
+   Right Panel Details: Description & Infographics
+   ========================================================================== */
+.ai-content p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.ai-content .highlight-text {
+    font-weight: 600;
+    color: #38bdf8;
+    border-left: 2px solid #38bdf8;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.metric-row {
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+}
+
+.metric-row:last-child {
+    margin-bottom: 0;
+}
+
+.metric-row label { 
+    display: block; 
+    margin-bottom: 6px; 
+    color: #94a3b8; 
+}
+
+.bar-container {
+    width: 100%; 
+    height: 8px; 
+    background: rgba(255,255,255,0.08); 
+    border-radius: 4px; 
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%; 
+    border-radius: 4px;
+}
+
+.blue-fill { background: linear-gradient(90deg, #1d4ed8, #2563eb); }
+.cyan-fill { background: linear-gradient(90deg, #0891b2, #06b6d4); }
+.teal-fill { background: linear-gradient(90deg, #0d9488, #14b8a6); }
+
+/* ==========================================================================
+   Responsive Display Adaptations
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        margin-top: 95px;
+    }
+    .content-section {
+        order: -1; /* Keeps scanner on top when layout breaks down into vertical stacks */
+    }
+}

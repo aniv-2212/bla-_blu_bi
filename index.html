@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatLens | Security Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="bg-video" poster="src/assets/background-fallback.jpg">
+        <source src="main.index/background.mp4" type="video/mp4">
+        <img src="src/main.index/background-fallback.jpg" alt="ThreatLens Background Safety Graphic" title="Video playback not supported">
+    </video>
+
+    <header class="navbar">
+        <div class="bar" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="logo">
+            <h1>ThreatLens</h1>
+        </div>
+    </header>
+
+    <nav class="nav-menu" id="navMenu">
+        <ul>
+            <li><a href="#" data-target="url-scanner">URL Scanner</a></li>
+            <li><a href="dist/index.html">CyberAi </a></li>
+            <li><a href="#" data-target="about">About</a></li>
+        </ul>
+    </nav>
+
+    <main class="container dashboard-grid">
+
+        <div class="side-panel left-panel">
+            <div class="panel-card map-card">
+                <h2>Threat Source Map</h2>
+                <div class="mock-map">
+                    <div class="globe-container">
+                        <div class="globe-core"></div>
+                        <div class="pulse-ring"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-card feed-card">
+                <h2>Latest Attacks Feed</h2>
+                <div class="attack-list">
+                    <div class="attack-item phishing">
+                        <i class="fa-solid fa-fish"></i> 
+                        Phishing from [IP] 
+                        <span>192.168.53.180</span>
+                    </div>
+                    <div class="attack-item malware">
+                        <i class="fa-solid fa-virus"></i> 
+                        Malware [Type] 
+                        <span>192.118.23.100</span>
+                    </div>
+                    <div class="attack-item phishing">
+                        <i class="fa-solid fa-fish"></i> 
+                        Phishing from [IP] 
+                        <span>192.166.23.100</span>
+                    </div>
+                    <div class="attack-item malware">
+                        <i class="fa-solid fa-virus"></i> 
+                        Malware [Type] 
+                        <span>192.118.32.100</span>
+                    </div>
+                    <div class="attack-item malware">
+                        <i class="fa-solid fa-virus"></i> 
+                        Malware [Type] 
+                        <span>192.168.35.100</span>
+                    </div>
+                    <div class="attack-item phishing">
+                        <i class="fa-solid fa-fish"></i> 
+                        Phishing from [IP] 
+                        <span>192.168.22.114</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="url-scanner" class="content-section active center-panel">
+            <h1>Analyze URL Safety</h1>
+            <p>Paste a link below to check for potential threats using our AI-driven engine.</p>
+
+            <div class="search-box">
+                <input type="text" id="urlInput" placeholder="https://example.com" aria-label="URL to scan">
+                <button id="scanBtn">Scan Now</button>
+            </div>
+            <div id="results" class="results-hidden"></div>
+        </section>
+
+        <div class="side-panel right-panel">
+            <div class="panel-card ai-insights-card">
+                <h2>Cyber AI Insights</h2>
+                <div class="ai-content">
+                    <p>See the internet through a cybersecurity lens—live, intelligent, and actionable.</p>
+                    <p>Global threat intelligence—explore cyber risks in real time with actionable insights.</p>
+                   <a href="dist/index.html" target="_blank" class="highlight-link">
+    <p class="highlight-text">Threat data into real-time intelligence.</p>
+</a>
+                </div>
+            </div>
+
+            <div class="panel-card metrics-card">
+                <h2>System Metrics</h2>
+                <div class="metric-row">
+                    <label>Threat level</label> 
+                    <div class="bar-container"><div class="bar-fill blue-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="metric-row">
+                    <label>Threat by type</label> 
+                    <div class="bar-container"><div class="bar-fill cyan-fill" style="width: 45%;"></div></div>
+                </div>
+                <div class="metric-row">
+                    <label>System process</label> 
+                    <div class="bar-container"><div class="bar-fill teal-fill" style="width: 70%;"></div></div>
+                </div>
+                <div class="metric-row">
+                    <label>System process</label> 
+                    <div class="bar-container"><div class="bar-fill blue-fill" style="width: 90%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <main class="container">
+        <section id="about" class="content-section">
+            <h1>About ThreatLens</h1>
+            <p>ThreatLens is an AI-powered cybersecurity platform designed to detect and analyze malicious URLs before they become a threat.</p>
+            <h2>Our Mission</h2>
+            <p>To make the internet safer by empowering users with intelligent, accessible, and explainable AI-driven cybersecurity tools.</p>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

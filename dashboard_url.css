@@ -1,0 +1,401 @@
+/* --- Base Styling Setup --- */
+* {
+    body {
+    /* 1. Link your background image file here */
+    background-image: url("dashboard.jpg");
+
+    /* 2. Prevents the image from tiling/repeating if the page gets long */
+    background-repeat: no-repeat;
+
+    /* 3. Centers the background asset crisp in the screen frame */
+    background-position: center center;
+
+    /* 4. Fixes it in place so the cards scroll over the background smoothly */
+    background-attachment: fixed;
+
+    /* 5. Forces the image to stretch and scale to cover the entire viewport */
+    background-size: cover;
+
+    /* Fallback color while image loads */
+    background-color: #020612;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+body {
+    background: #020612;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 2rem; max-width: 1600px;
+    margin: 0 auto; padding: 2rem;
+}
+.panel { display: flex; flex-direction: column; gap: 2rem; }
+
+/* Base Glass Container */
+.glass-card {
+    background: rgba(2, 10, 31, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px; 
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* =======================================================
+   NEON THEMES & INTERNAL MATRIX BOX COLORS
+   ======================================================= */
+
+/* 1. CYAN VARIANT (Structural Dimensions) */
+.card-cyan { border: 1px solid rgba(6, 182, 212, 0.2); }
+.card-cyan h3, .card-cyan h2 { color: #22d3ee; }
+.card-cyan .ring { stroke: #06b6d4; }
+.card-cyan .metric-box { background: rgba(6, 182, 212, 0.03); border-color: rgba(6, 182, 212, 0.08); }
+
+.card-cyan:hover {
+    border-color: rgba(6, 182, 212, 0.8);
+    transform: translateY(-3px) scale(1.003);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(6, 182, 212, 0.25);
+}
+.card-cyan .metric-box:hover {
+    background: rgba(6, 182, 212, 0.12);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+/* Container Panel styling to match image theme */
+.analysis-panel {
+    background-color: rgba(11, 21, 40, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #1E2E4A;
+    border-radius: 0.75rem; /* 12px */
+    padding: 1.5rem; /* 24px */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Section spacing if stacked vertically */
+.domain-intelligence-section {
+    margin-top: 1.5rem;
+}
+
+/* Header layout rules */
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.icon-teal {
+    color: #00E5FF;
+}
+
+.panel-title {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.title-teal {
+    color: #00E5FF;
+}
+
+/* CSS Responsive Grid Rules */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+/* Small devices (phones, 640px and up) */
+@media (min-width: 640px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .metrics-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* Grid Cell Item Formatting */
+.metric-card {
+    background-color: #0F1C36;
+    border: 1px solid #1A2B4C;
+    border-radius: 0.5rem; /* 8px */
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Labels and Texts inside cells */
+.metric-label {
+    font-size: 0.75rem; /* 12px */
+    color: #9CA3AF; /* gray-400 */
+    font-weight: 500;
+}
+
+.metric-value {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 700;
+    letter-spacing: 0.025em;
+}
+
+/* Dynamic color variants for values */
+.value-white {
+    color: #FFFFFF;
+}
+
+.value-green {
+    color: #10B981; /* Matches the clean badge text styling */
+}
+
+.value-muted {
+    color: #4B5563; /* gray-600 */
+}
+
+/* Decorative empty slot management */
+.grid-placeholder {
+    display: none;
+    border-style: dashed;
+    background-color: rgba(15, 28, 54, 0.3);
+    border-color: rgba(26, 43, 76, 0.4);
+    justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .grid-placeholder {
+        display: flex;
+    }
+}
+/* 2. PURPLE VARIANT (Tokenization & Complexity) */
+.card-purple { border: 1px solid rgba(168, 85, 247, 0.2); }
+.card-purple h3 { color: #c084fc; }
+.card-purple .metric-box { background: rgba(168, 85, 247, 0.03); border-color: rgba(168, 85, 247, 0.08); }
+
+.card-purple:hover {
+    border-color: rgba(168, 85, 247, 0.8);
+    transform: translateY(-3px) scale(1.003);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.25);
+}
+.card-purple .metric-box:hover {
+    background: rgba(168, 85, 247, 0.12);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+/* 3. ORANGE VARIANT (Token Character Ratios) */
+.card-orange { border: 1px solid rgba(249, 115,  orange, 0.2); border-color: rgba(249, 115, 22, 0.2); }
+.card-orange h3 { color: #ff9858; }
+.card-orange .metric-box { background: rgba(249, 115, 22, 0.02); border-color: rgba(249, 115, 22, 0.08); }
+
+.card-orange:hover {
+    border-color: rgba(249, 115, 22, 0.8);
+    transform: translateY(-3px) scale(1.003);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(249, 115, 22, 0.25);
+}
+.card-orange .metric-box:hover {
+    background: rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+}
+
+/* 4. RED VARIANT (Threat Signatures Grid) */
+.card-red { border: 1px solid rgba(239, 68, 68, 0.2); }
+.card-red h3 { color: #f87171; }
+.card-red .metric-box { background: rgba(239, 68, 68, 0.02); border-color: rgba(239, 68, 68, 0.08); }
+
+.card-red:hover {
+    border-color: rgba(239, 68, 68, 0.8);
+    transform: translateY(-3px) scale(1.003);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(239, 68, 68, 0.25);
+}
+.card-red .metric-box:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+/* =======================================================
+   SUB-METRICS CONTAINER STRUCTURES
+   ======================================================= */
+.metrics-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); 
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+}
+.metric-box {
+    padding: 0.9rem 1.1rem; border-radius: 10px; 
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.metric-box span { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
+.metric-box b { font-family: monospace; font-size: 1rem; color: #ffffff; }
+
+/* Extra details for interactions */
+.metric-box:hover span { color: #f1f5f9; }
+.metric-box:hover b { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+
+/* Left Sidebar Verdict Components */
+.verdict-card { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.url-subtext { color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem; word-break: break-all; }
+.ring-container { position: relative; width: 220px; height: 220px; margin-bottom: 1.5rem; }
+svg { transform: rotate(-90deg); }
+circle { fill: none; stroke-width: 12; stroke-linecap: round; }
+.track { stroke: rgba(255, 255, 255, 0.02); }
+.ring { transition: stroke-dashoffset 0.8s ease-out; }
+.ring-labels { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.percentage { font-size: 2.5rem; font-weight: 800; display: block; }
+.label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; letter-spacing: 1px; }
+.verdict-badge { padding: 0.5rem 1.5rem; border-radius: 30px; font-weight: 700; font-size: 1rem; width: 90%; }
+.status-loading { background: rgba(255,255,255,0.05); color: #94a3b8; }
+.btn { display: block; text-align: center; text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; width: 100%; }
+.btn-secondary { background: rgba(255,255,255,0.03); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.08); margin-top: 1.5rem;}
+
+
+
+
+/* Styling Configurations matching ThreatLens Ecosystem */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+body {
+    background: #030914; /* Deep Cyber Dark space color background */
+    color: #f8fafc;
+    min-height: 100vh;
+}
+.navbar {
+    height: 65px; background: rgba(3, 9, 20, 0.9);
+    display: flex; align-items: center; padding: 0 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-left { display: flex; align-items: center; gap: 1.2rem; }
+.menu-icon { font-size: 1.2rem; cursor: pointer; color: #94a3b8; }
+.brand-name { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; }
+
+/* Dashboard Core Grid Split */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 1.5rem; max-width: 1500px;
+    margin: 0 auto; padding: 2rem;
+}
+.panel { display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* Unified Glassmorphic Containers */
+.glass-card {
+    background: rgba(13, 22, 38, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px; padding: 1.75rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* Left Panel Styling */
+.verdict-card {
+    position: sticky; top: 2rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+}
+.url-subtext {
+    color: #64748b; font-size: 0.85rem; margin-top: 0.5rem; margin-bottom: 1.5rem;
+    word-break: break-all; max-width: 100%;
+}
+
+/* SVG Ring Engine Styles */
+.ring-container { position: relative; width: 220px; height: 220px; margin-bottom: 1.5rem; }
+svg { transform: rotate(-90deg); }
+circle { fill: none; stroke-width: 12; stroke-linecap: round; }
+.track { stroke: rgba(255, 255, 255, 0.03); }
+.ring {
+    stroke: #3b82f6; transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.4s;
+}
+.ring-labels {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+.percentage { font-size: 2.4rem; font-weight: 800; display: block; line-height: 1; }
+.label { font-size: 0.75rem; text-transform: uppercase; color: #64748b; letter-spacing: 1px; }
+
+/* Glow States for Ring Components */
+.ring-safe { stroke: #10b981; filter: drop-shadow(0 0 6px #10b981); }
+.ring-warning { stroke: #f59e0b; filter: drop-shadow(0 0 6px #f59e0b); }
+.ring-danger { stroke: #ef4444; filter: drop-shadow(0 0 6px #ef4444); }
+
+/* Verdict Badges */
+.verdict-badge {
+    padding: 0.5rem 1.5rem; border-radius: 30px; font-weight: 700; font-size: 1.1rem; min-width: 80%;
+}
+.status-loading { background: rgba(255,255,255,0.05); color: #94a3b8; }
+.status-safe { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3); }
+.status-warning { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+.status-danger { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+/* Right Panel Metrics Feature Layout */
+.feature-group h3 {
+    font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.5rem;
+}
+.metrics-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem;
+}
+.metric-box {
+    background: rgba(255, 255, 255, 0.015); border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 0.85rem 1rem; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;
+}
+.metric-box span { color: #94a3b8; font-size: 0.85rem; font-weight: 500; }
+.metric-box b { font-family: monospace; font-size: 0.95rem; color: #f1f5f9; }
+
+/* Status Binary Indicators */
+.indicator { padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+.badge-safe { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.badge-danger { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+/* Decorative Text Styling Colors */
+.text-blue { color: #3b82f6; } .text-purple { color: #a855f7; }
+.text-amber { color: #f59e0b; } .text-red { color: #ef4444; }
+
+.action-footer { margin-top: 1.5rem; width: 100%; }
+.btn {
+    display: block; text-align: center; text-decoration: none; padding: 0.6rem 1.2rem;
+    border-radius: 6px; font-weight: 600; font-size: 0.9rem; transition: background 0.2s;
+}
+.btn-secondary { background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); }
+.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* Desktop View Layout Collapsing Engine */
+@media (max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .verdict-card { position: relative; top: 0; }
+}

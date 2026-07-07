@@ -1,0 +1,128 @@
+## Common Commands (Troubleshooting)
+run this on browser 
+
+
+
+### Activate Virtual Environment (Windows)
+
+```powershell
+.venv\Scripts\activate
+```
+
+---
+
+### Install Required Packages
+
+```bash
+pip install fastapi uvicorn pydantic tldextract numpy pandas scikit-learn xgboost joblib python-multipart
+```
+
+---
+
+### Install from requirements.txt
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Update pip
+
+```bash
+python -m pip install --upgrade pip
+```
+
+---
+
+### Run the FastAPI Backend
+
+```bash
+uvicorn dashboard_url:app --reload
+```
+
+---
+
+### If Uvicorn is Not Installed
+
+```bash
+pip install uvicorn
+```
+
+or
+
+```bash
+python -m uvicorn dashboard_url:app --reload
+```
+
+---
+
+### If FastAPI is Missing
+
+```bash
+pip install fastapi
+```
+
+---
+
+### If tldextract is Missing
+
+```bash
+pip install tldextract
+```
+
+---
+
+### Check Installed Packages
+
+```bash
+pip list
+```
+
+---
+
+### Check Python Version
+
+```bash
+python --version
+```
+
+---
+
+### Generate requirements.txt
+
+```bash
+pip freeze > requirements.txt
+```
+
+---
+
+### Backend API Documentation
+
+Open in your browser:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+### If the Backend Shows "Connection Refused"
+
+1. Activate the virtual environment:
+
+```powershell
+.venv\Scripts\activate
+```
+
+2. Start the server:
+
+```bash
+uvicorn dashboard_url:app --reload
+```
+
+3. Verify the server is running by visiting:
+
+```
+http://127.0.0.1:8000/docs
+```

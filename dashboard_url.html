@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatLens - Deep Inspection Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard_url.css">
+</head>
+<style>
+        body {
+            /* Replace 'your-cyber-background.jpg' with your actual image path or URL */
+            background-image: url('dashboard.jpg'); 
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #020612; /* Fallback deep space dark color */
+        }
+    </style>
+<body class="results-page">
+
+    <main class="dashboard-grid">
+
+        <section class="panel left-panel">
+            <div class="glass-card card-cyan verdict-card">
+                <h2>Analysis Verdict</h2>
+                <p id="target-url" class="url-subtext">Fetching target...</p>
+
+                <div class="ring-container">
+                    <svg width="220" height="220">
+                        <circle class="track" cx="110" cy="110" r="95"></circle>
+                        <circle id="risk-ring" class="ring" cx="110" cy="110" r="95" stroke-dasharray="597" stroke-dashoffset="597"></circle>
+                    </svg>
+                    <div class="ring-labels">
+                        <span id="risk-percent" class="percentage">0%</span>
+                        <span class="label">Risk Score</span>
+                    </div>
+                </div>
+
+                <div id="verdict-text" class="verdict-badge status-loading">Analyzing Metrics...</div>
+
+                <div class="action-footer">
+                    <a href="index.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Rescan</a>
+                </div>
+                <div class="analysis-panel domain-intelligence-section">
+    <div class="panel-header">
+        <svg class="panel-icon icon-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.6 9h16.8M3.6 15h16.8M12 3a15.3 15.3 0 014.5 9c0 3.3-1.6 6.4-4.5 9-2.9-2.6-4.5-5.7-4.5-9s1.6-6.4 4.5-9z"></path>
+        </svg>
+        <h2 class="panel-title title-teal">Domain Intelligence</h2>
+    </div>
+
+    <div class="metrics-grid">
+        
+        <div class="metric-card">
+            <span class="metric-label">WHOIS Lookup</span>
+            <span id="domain-whois" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">Domain Age</span>
+            <span id="domain-age" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">Registrar</span>
+            <span id="domain-registrar" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">Expiration Date</span>
+            <span id="domain-expiry" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">DNS Records</span>
+            <span id="domain-dns" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">IP Address</span>
+            <span id="domain-ip" class="metric-value value-white">Loading...</span>
+        </div>
+
+        <div class="metric-card">
+            <span class="metric-label">SSL Certificate</span>
+            <span id="domain-ssl" class="metric-value value-green">Loading...</span>
+        </div>
+
+        <div class="metric-card grid-placeholder">
+            <span class="metric-value value-muted">--</span>
+        </div>
+
+    </div>
+</div>
+
+        </section>
+
+        <section class="panel right-panel">
+              <div class="glass-card card-cyan feature-group">
+                <h3><i class="fa-solid fa-arrows-left-right"></i> STRUCTURAL DIMENSIONS</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box"><span>URL Total Length</span><b id="feat-url_length">-</b></div>
+                    <div class="metric-box"><span>Hostname Length</span><b id="feat-hostname_length">-</b></div>
+                    <div class="metric-box"><span>Domain Length</span><b id="feat-domain_length">-</b></div>
+                    <div class="metric-box"><span>Path Length</span><b id="feat-path_length">-</b></div>
+                    <div class="metric-box"><span>Query Length</span><b id="feat-query_length">-</b></div>
+                    <div class="metric-box"><span>Fragment Length</span><b id="feat-fragment_length">-</b></div>
+                    <div class="metric-box"><span>TLD Length</span><b id="feat-tld_length">-</b></div>
+                </div>
+            </div>
+
+            <div class="glass-card card-purple feature-group">
+                <h3><i class="fa-solid fa-code"></i> TOKENIZATION & COMPLEXITY</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box"><span>Entropy Rate</span><b id="feat-entropy">-</b></div>
+                    <div class="metric-box"><span>Token Count</span><b id="feat-token_count">-</b></div>
+                    <div class="metric-box"><span>Average Token Length</span><b id="feat-avg_token_length">-</b></div>
+                    <div class="metric-box"><span>Maximum Token Length</span><b id="feat-max_token_length">-</b></div>
+                    <div class="metric-box"><span>Longest Token</span><b id="feat-longest_token">-</b></div>
+                    <div class="metric-box"><span>Empty Tokens Detected</span><b id="feat-empty_tokens">-</b></div>
+                </div>
+            </div>
+
+            <div class="glass-card card-orange feature-group">
+                <h3><i class="fa-solid fa-calculator"></i> TOKEN CHARACTER RATIOS</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box"><span>Dots (.)</span><b id="feat-dot_count">-</b></div>
+                    <div class="metric-box"><span>Hyphens (-)</span><b id="feat-hyphen_count">-</b></div>
+                    <div class="metric-box"><span>Underscores (_)</span><b id="feat-underscore_count">-</b></div>
+                    <div class="metric-box"><span>Slashes (/)</span><b id="feat-slash_count">-</b></div>
+                    <div class="metric-box"><span>Special Characters</span><b id="feat-special_char_count">-</b></div>
+                    <div class="metric-box"><span>Digit Count</span><b id="feat-digit_count">-</b></div>
+                    <div class="metric-box"><span>Letter Count</span><b id="feat-letter_count">-</b></div>
+                    <div class="metric-box"><span>Digit Ratio</span><b id="feat-digit_ratio">-</b></div>
+                    <div class="metric-box"><span>Letter Ratio</span><b id="feat-letter_ratio">-</b></div>
+                    <div class="metric-box"><span>Uppercase Count</span><b id="feat-uppercase_count">-</b></div>
+                    <div class="metric-box"><span>Max Consecutive Digits</span><b id="feat-max_consecutive_digits">-</b></div>
+                    <div class="metric-box"><span>Consecutive Special Groups</span><b id="feat-consecutive_special_groups">-</b></div>
+                </div>
+            </div>
+
+            <div class="glass-card card-red feature-group">
+                <h3><i class="fa-solid fa-shield-halved"></i> STRUCTURAL THREAT SIGNATURES</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box"><span>HTTPS Protocol</span><b id="feat-https">-</b></div>
+                    <div class="metric-box"><span>HTTP Plaintext</span><b id="feat-http">-</b></div>
+                    <div class="metric-box"><span>IP Address Hostname</span><b id="feat-ip_address">-</b></div>
+                    <div class="metric-box"><span>Subdomain Count</span><b id="feat-subdomain_count">-</b></div>
+                    <div class="metric-box"><span>Suspicious Keywords</span><b id="feat-suspicious_keyword_count">-</b></div>
+                    <div class="metric-box"><span>Brand Spoof Keywords</span><b id="feat-brand_keyword_count">-</b></div>
+                    <div class="metric-box"><span>URL Shortener Service</span><b id="feat-url_shortener">-</b></div>
+                    <div class="metric-box"><span>Suspicious TLD Flag</span><b id="feat-suspicious_tld">-</b></div>
+                    <div class="metric-box"><span>Double Slash Count (//)</span><b id="feat-double_slash_count">-</b></div>
+                    <div class="metric-box"><span>Has At (@) Symbol</span><b id="feat-has_at_symbol">-</b></div>
+                    <div class="metric-box"><span>Equal Signs (=)</span><b id="feat-equal_count">-</b></div>
+                    <div class="metric-box"><span>Question Marks (?)</span><b id="feat-question_count">-</b></div>
+                    <div class="metric-box"><span>Ampersands (&)</span><b id="feat-ampersand_count">-</b></div>
+                    <div class="metric-box"><span>Percents (%)</span><b id="feat-percent_count">-</b></div>
+                    <div class="metric-box"><span>Has Custom Port</span><b id="feat-has_port">-</b></div>
+                    <div class="metric-box"><span>Domain Has Digits</span><b id="feat-domain_has_digits">-</b></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="dashboard_url.js"></script>
+</body>
+</html>
